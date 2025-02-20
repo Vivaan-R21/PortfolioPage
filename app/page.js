@@ -1,4 +1,6 @@
 import Image from "next/image";
+import 'typeface-inter';
+
 
 export default function Home() {
   return (
