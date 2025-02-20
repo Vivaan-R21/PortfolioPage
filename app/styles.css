@@ -1,0 +1,68 @@
+@import 'typeface-inter';
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.navbar {
+  background-color: #add8e6; /* Baby blue color */
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px; /* Space between the list items */
+}
+
+.navbar li {
+  margin: 0;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+  background-color: #87ceeb; /* Slightly darker blue on hover */
+  border-radius: 5px;
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  background-color: #000;
+  border-radius: 50%;
+}
+
+.intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.big-circle {
+  width:300px;
+  height: 300px;
+  background-color: #000;
+  border-radius: 50%;
+  margin-left: 6%;
+  margin-top: 3%;
+}
+
+.intro h1 {
+  font-size: 2rem;
+  margin-right: 400px;
+  margin-bottom: 200px;
+}
