@@ -46,23 +46,40 @@ body {
 }
 
 .intro {
+  padding: 20px;
+  text-align: center;
+}
+
+.intro-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 20px;
+  justify-content: flex-start; /* Align items to the start */
+  margin-left: 3rem; /* Move the entire content to the right by 3rem */
 }
 
 .big-circle {
-  width:300px;
-  height: 300px;
-  background-color: #000;
+  width: 100px;
+  height: 100px;
+  background-color: #ccc;
   border-radius: 50%;
-  margin-left: 6%;
-  margin-top: 3%;
+  margin-right: 3rem; /* Move the circle to the left by 3rem */
 }
 
-.intro h1 {
-  font-size: 2rem;
-  margin-right: 400px;
-  margin-bottom: 200px;
+.text-content {
+  max-width: 1100px;
+  text-align: left;
+  margin-left: 7rem; /* Move the text content to the right by 7rem */
+  margin-bottom: 7rem;
+}
+
+#MyName {
+  font-size: 2em;
+  margin-bottom: 2rem;
+  margin-left: 14rem;
+}
+
+.about-me {
+  font-size: 1em;
+  line-height: 1.5;
+  margin: 0;
 }

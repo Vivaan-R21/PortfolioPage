@@ -4,7 +4,7 @@ import Image from "next/image";
 import Head from "next/head";
 import "typeface-inter";
 import "./styles.css";
-import { useFadeInOnScroll } from "@/hooks/use-fade-in-on-scroll";
+import { useFadeInOnScroll } from "../use-fade-in-on-scroll";
 
 /**
  * @typedef {Object} FadeInSectionProps
@@ -44,8 +44,23 @@ export default function Home() {
       </nav>
       <FadeInSection>
         <section className="intro">
-          <div className="big-circle"></div>
-          <h1 id="MyName">Vivaan Rajpurohit</h1>
+          <div className="intro-content">
+            <Image src="/PFP-PNG.png" alt="Vivaan Rajpurohit's Image" width={400} height={400}/>
+            <div className="text-content">
+              <h1 id="MyName">Vivaan Rajpurohit</h1>
+              <p className="about-me">
+                Experienced developer with 7 months of industrial work experience at MyHomeWorkRewards, 
+                a Canadian platform that rewards students for completing homework. Proficient in HTML, 
+                CSS, JavaScript, PHP, and cloud services. Currently developing mobile and web apps with Dart, 
+                Flutter, and Python to enhance user experiences, with a focus on user retention and performance 
+                optimization. Passionate about continuous learning and staying current with emerging technologies. 
+                Completed FAA ground school and serve as School Site Council Vice President, overseeing school funds. 
+                Adept at problem-solving, critical thinking, and collaboration, I leverage my expertise to deliver 
+                innovative solutions. Achieving a 67% improvement in website performance and user 
+                engagement, contributing to significant growth in user retention and overall project success.
+              </p>
+            </div>
+          </div>
         </section>
       </FadeInSection>
     </div>
