@@ -110,7 +110,19 @@ export default function Home() {
               <div className="flip-card" key={skill}>
                 <div className="flip-card-inner">
                   <div className="flip-card-front">
-                    <img src="public\PHPImage.png" />
+                    {skill === "PHP" ? (
+                      <img src="/PHPImage.png" alt={`${skill} Image`} />
+                    ) : skill === "JavaScript" ? (
+                      <img src="/JS.png" alt={`${skill} Image`} />
+                    ) : skill === "HTML & CSS" ? (
+                      <img src="/HTML&CSS.png" alt={`${skill} Image`} />
+                    ) : skill === "Dart" ? (
+                      <img src="/Dart.png" alt={`${skill} Image`} />
+                    ) : skill === "Python" ? (
+                      <img src="/Python.png" alt={`${skill} Image`} />
+                    ) : (
+                      <p>{skill}</p>
+                      )}
                   </div>
                   <div className="flip-card-back">
                     <p>{skill}</p>
@@ -158,24 +170,27 @@ export default function Home() {
           <div className="section">
             <h1 id="AbtMe">Work Experience</h1>
             <hr />
-              <p className="created-description">
-                Since January 2025, I have been working at the Modesto
-                Children's Museum as a web coordinator and data analyst,
-                managing the website and utilizing data to enhance outreach
-                efforts. Since September 2024, I have been contributing to
-                MyHomeWork Rewards, where I have created nearly seven lessons to
-                support student learning on the platform.
-              </p>
-
+            <p className="created-description">
+              Since January 2025, I have been working at the Modesto Children's
+              Museum as a web coordinator and data analyst, managing the website
+              and utilizing data to enhance outreach efforts. Since September
+              2024, I have been contributing to MyHomeWork Rewards, where I have
+              created nearly seven lessons to support student learning on the
+              platform.
+            </p>
           </div>
         </div>
         <div>
           <h1 id="AbtMe">Motives</h1>
           <hr />
           <div className="quote-box">
-            <div className="arrow left" onClick={handlePrevQuote}>&#9664;</div>
+            <div className="arrow left" onClick={handlePrevQuote}>
+              &#9664;
+            </div>
             <div className="quote">{quotes[currentQuoteIndex]}</div>
-            <div className="arrow right" onClick={handleNextQuote}>&#9654;</div>
+            <div className="arrow right" onClick={handleNextQuote}>
+              &#9654;
+            </div>
           </div>
         </div>
       </FadeInSection>
