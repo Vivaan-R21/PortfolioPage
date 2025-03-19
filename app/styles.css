@@ -3,46 +3,38 @@
 
 body {
   font-family: 'Inter', sans-serif;
+  background-color: #56cdfc;
+  color: white;
 }
 
 .navbar {
-  background-color: #add8e6; /* Baby blue color */
+  background-color: #b8eafe;
   padding: 10px 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .navbar ul {
-  list-style-type: none;
+  list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 20px; /* Space between the list items */
-}
-
-.navbar li {
-  margin: 0;
+  gap: 45px;
 }
 
 .navbar a {
   text-decoration: none;
   color: black;
   font-weight: bold;
-  padding: 10px 15px;
-  transition: background-color 0.3s ease;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .navbar a:hover {
-  background-color: #87ceeb; /* Slightly darker blue on hover */
-  border-radius: 5px;
-}
-
-.circle {
-  width: 50px;
-  height: 50px;
-  background-color: #000;
-  border-radius: 50%;
+  background-color: #87ceeb;
+  transform: scale(1.05);
 }
 
 .intro {
@@ -53,33 +45,242 @@ body {
 .intro-content {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Align items to the start */
-  margin-left: 3rem; /* Move the entire content to the right by 3rem */
+  justify-content: space-between;
 }
 
-.big-circle {
-  width: 100px;
-  height: 100px;
-  background-color: #ccc;
-  border-radius: 50%;
-  margin-right: 3rem; /* Move the circle to the left by 3rem */
+.image-container {
+  width: 30%;
+  height: 400px;
+  position: relative;
+  margin-left: 7rem;
 }
 
 .text-content {
-  max-width: 1100px;
+  width: 50%;
   text-align: left;
-  margin-left: 7rem; /* Move the text content to the right by 7rem */
-  margin-bottom: 7rem;
+  padding: 20px;
+  margin-right: 6rem;
+  line-height: 1.5;
+}
+
+#MyName, #AbtMe {
+  font-size: 2em;
+  text-align: center;
 }
 
 #MyName {
-  font-size: 2em;
   margin-bottom: 2rem;
-  margin-left: 14rem;
+}
+
+#AbtMe {
+  margin-top: 7rem;
 }
 
 .about-me {
   font-size: 1em;
   line-height: 1.5;
   margin: 0;
+  word-wrap: break-word;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 150px;
+  height: 150px;
+  perspective: 1000px;
+  margin: 20px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.checkmark {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  background-color: green;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.flip-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 5rem 2rem;
+  justify-content: center;
+}
+
+.certificates {
+  display: flex;
+  justify-content: space-around; /* Evenly space the boxes */
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.certificate-box {
+  width: 15rem;
+  height: 1.8rem;
+  background-color: #bbb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+
+.certificate-box:hover {
+  width: 4rem;
+  height: 2rem;
+}
+
+.certificate-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.certificate-content .checkmark {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 15px;
+  height: 15px;
+  background-color: green;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.certificate-box:hover .checkmark {
+  opacity: 1;
+}
+
+.side-by-side, .contacts-reference {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.contacts-reference {
+  background-color: #b8eafe; /* Same blue color as the navbar */
+  padding: 20px;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to the top */
+}
+
+.contacts-reference .section {
+  background-color: transparent; /* Make section background transparent */
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
+  margin: 0 1rem;
+}
+
+.section {
+  flex: 1;
+  margin: 0 1rem;
+}
+
+.section h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.created, .work-experience, .motives {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+}
+
+.created div, .work-experience div, .motives div {
+  flex: 1;
+  text-align: center;
+}
+
+.quote-box {
+  width: 87rem;
+  height: 26rem;
+  background-color: #fff;
+  border: 2px solid #b8eafe;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 2rem auto;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quote-box .quote {
+  text-align: left;
+  font-size: 2rem;
+  color: #333;
+}
+
+.quote-box .arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: #b8eafe;
+  cursor: pointer;
+}
+
+.quote-box .arrow.left {
+  left: -2rem;
+}
+
+.quote-box .arrow.right {
+  right: -2rem;
 }
