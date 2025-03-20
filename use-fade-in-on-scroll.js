@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function useFadeInOnScroll() {
   const [isVisible, setIsVisible] = useState(false);
@@ -7,10 +7,13 @@ export function useFadeInOnScroll() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(ref.current); // Stop observing once the element is visible
+        }
       },
       {
-        threshold: 0.1,
+        threshold: 0.3, // Adjust this value as needed
       }
     );
 

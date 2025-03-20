@@ -1,11 +1,11 @@
 "use client";
 
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Head from "next/head";
 import "typeface-inter";
 import "./styles.css";
 import { useFadeInOnScroll } from "../use-fade-in-on-scroll";
-import { useState } from "react";
 
 export function FadeInSection({ children }) {
   const { ref, isVisible } = useFadeInOnScroll();
@@ -28,23 +28,121 @@ export default function Home() {
     'Placeholder quote 3',
   ];
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [translateX, setTranslateX] = useState(0);
+  const quoteWrapperRef = useRef(null);
+
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setStartX(e.clientX);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    const diffX = e.clientX - startX;
+    setTranslateX(diffX);
+    quoteWrapperRef.current.style.transform = `translateX(calc(-${currentQuoteIndex * 100}% + ${translateX}px))`;
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    if (translateX > 100) {
+      handlePrevQuote();
+    } else if (translateX < -100) {
+      handleNextQuote();
+    } else {
+      quoteWrapperRef.current.style.transition = 'transform 0.5s ease-in-out';
+      quoteWrapperRef.current.style.transform = `translateX(-${currentQuoteIndex * 100}%)`;
+      setTimeout(() => {
+        quoteWrapperRef.current.style.transition = '';
+      }, 500);
+    }
+    setTranslateX(0);
+  };
 
   const handlePrevQuote = () => {
     setCurrentQuoteIndex((prevIndex) => (prevIndex === 0 ? quotes.length - 1 : prevIndex - 1));
+    quoteWrapperRef.current.style.transition = 'transform 0.5s ease-in-out';
+    quoteWrapperRef.current.style.transform = `translateX(-${(currentQuoteIndex - 1 + quotes.length) % quotes.length * 100}%)`;
+    setTimeout(() => {
+      quoteWrapperRef.current.style.transition = '';
+    }, 500);
   };
 
   const handleNextQuote = () => {
     setCurrentQuoteIndex((prevIndex) => (prevIndex === quotes.length - 1 ? 0 : prevIndex + 1));
+    quoteWrapperRef.current.style.transition = 'transform 0.5s ease-in-out';
+    quoteWrapperRef.current.style.transform = `translateX(-${(currentQuoteIndex + 1) % quotes.length * 100}%)`;
+    setTimeout(() => {
+      quoteWrapperRef.current.style.transition = '';
+    }, 500);
   };
+
+  useEffect(() => {
+    const handleScroll = (e) => {
+      e.preventDefault();
+      const targetId = e.target.getAttribute("href").slice(1);
+      const targetElement = document.getElementById(targetId);
+      const offset = 100; // Increase this value to ensure the section title is hidden behind the navbar
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    };
+
+    const links = document.querySelectorAll(".navbar a");
+    links.forEach((link) => {
+      link.addEventListener("click", handleScroll);
+    });
+
+    return () => {
+      links.forEach((link) => {
+        link.removeEventListener("click", handleScroll);
+      });
+    };
+  }, []);
+
+  const skills = [
+    {
+      name: "Python",
+      image: "/Python.png",
+      libraries: ["Tkinter", "OpenCV2", "PyBazaar", "Django", "Kiwi", "Openwin32", "Flask", "Pandas"],
+    },
+    {
+      name: "Dart",
+      image: "/Dart.png",
+      libraries: ["Flutter"],
+    },
+    {
+      name: "HTML & CSS",
+      image: "/HTML&CSS.png",
+      libraries: ["Bootstrap"],
+    },
+    {
+      name: "JavaScript",
+      image: "/JS.png",
+      libraries: ["REACT", "REDUX"],
+    },
+    {
+      name: "PHP",
+      image: "/PHPImage.png",
+      libraries: [],
+    },
+  ];
 
   return (
     <div>
       <Head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Navigation Bar</title>
+        <title>Vivaan Rajpurohit - Developer Portfolio</title>
       </Head>
       <nav className="navbar">
+        <a href="#" className="navbar-brand">Vivaan Rajpurohit</a>
         <ul>
           <li>
             <a href="#skills">Skills</a>
@@ -64,7 +162,7 @@ export default function Home() {
         </ul>
       </nav>
       <FadeInSection>
-        <div className="intro">
+        <div className="intro" id="about">
           <div className="intro-content">
             <div className="image-container">
               <Image
@@ -77,7 +175,7 @@ export default function Home() {
             <div className="text-content">
               <h1 id="MyName">Vivaan Rajpurohit</h1>
               <p className="about-me">
-                Experienced developer with 7 months of industrial workexperience
+                Experienced developer with 7 months of industrial work experience
                 at MyHomeWorkRewards, a Canadian platform that rewards students
                 for completing homework. Proficient in HTML,CSS, JavaScript,
                 PHP, and cloud services. Currently developing mobile and web
@@ -95,37 +193,23 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div>
+        <div id="skills">
           <h1 id="AbtMe">Everything I know</h1>
           <hr />
           <div className="flip-card-grid">
-            {[
-              "Python",
-              "Dart",
-              "HTML & CSS",
-              "JavaScript",
-              "PHP",
-              "Placeholder",
-            ].map((skill) => (
-              <div className="flip-card" key={skill}>
+            {skills.map((skill) => (
+              <div className="flip-card" key={skill.name}>
                 <div className="flip-card-inner">
                   <div className="flip-card-front">
-                    {skill === "PHP" ? (
-                      <img src="/PHPImage.png" alt={`${skill} Image`} />
-                    ) : skill === "JavaScript" ? (
-                      <img src="/JS.png" alt={`${skill} Image`} />
-                    ) : skill === "HTML & CSS" ? (
-                      <img src="/HTML&CSS.png" alt={`${skill} Image`} />
-                    ) : skill === "Dart" ? (
-                      <img src="/Dart.png" alt={`${skill} Image`} />
-                    ) : skill === "Python" ? (
-                      <img src="/Python.png" alt={`${skill} Image`} />
-                    ) : (
-                      <p>{skill}</p>
-                      )}
+                    <img src={skill.image} alt={`${skill.name} Image`} />
                   </div>
                   <div className="flip-card-back">
-                    <p>{skill}</p>
+                    <p>{skill.name}</p>
+                    <ul>
+                      {skill.libraries.map((library) => (
+                        <li key={library}>{library}</li>
+                      ))}
+                    </ul>
                     <div className="checkmark">✔</div>
                   </div>
                 </div>
@@ -133,22 +217,41 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <div>
+        <div id="awards">
           <h1 id="AbtMe">Certifications</h1>
           <hr />
           <div className="certificates">
-            {Array(4)
-              .fill()
-              .map((_, i) => (
-                <div className="certificate-box" key={i}>
-                  <div className="certificate-content">
-                    <div className="checkmark">✔</div>
-                  </div>
-                </div>
-              ))}
+            <div className="certificate-box">
+              <div className="certificate-content">
+                <a href="https://www.freecodecamp.org/certification/Vivaan-Rajpurohit/responsive-web-design" target="_blank" rel="noopener noreferrer">
+                  Responsive Web Design
+                </a>
+              </div>
+            </div>
+            <div className="certificate-box">
+              <div className="certificate-content">
+                <a href="https://www.freecodecamp.org/certification/Vivaan-Rajpurohit/javascript-algorithms-and-data-structures-v8" target="_blank" rel="noopener noreferrer">
+                  JavaScript Algorithms and Data Structures
+                </a>
+              </div>
+            </div>
+            <div className="certificate-box">
+              <div className="certificate-content">
+                <a href="https://udemy-certificate.s3.amazonaws.com/pdf/UC-495b0697-0509-4b9c-8bee-f42039e17a35.pdf" target="_blank" rel="noopener noreferrer">
+                  Python Certificate
+                </a>
+              </div>
+            </div>
+            <div className="certificate-box">
+              <div className="certificate-content">
+                <a href="https://udemy-certificate.s3.amazonaws.com/pdf/UC-7765a6bf-8866-4ac2-88de-13f0dd3e8720.pdf" target="_blank" rel="noopener noreferrer">
+                  FAA Certificate
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="side-by-side">
+        <div className="side-by-side" id="resume">
           <div className="section">
             <h1 id="AbtMe">Things I've Created</h1>
             <hr />
@@ -180,28 +283,59 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div>
+        <div id="motives">
           <h1 id="AbtMe">Motives</h1>
           <hr />
-          <div className="quote-box">
-            <div className="arrow left" onClick={handlePrevQuote}>
-              &#9664;
-            </div>
-            <div className="quote">{quotes[currentQuoteIndex]}</div>
-            <div className="arrow right" onClick={handleNextQuote}>
-              &#9654;
+          <div
+            className="quote-box"
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+          >
+            <div
+              className="quote-wrapper"
+              ref={quoteWrapperRef}
+              style={{ transform: `translateX(calc(-${currentQuoteIndex * 100}% + ${translateX}px))` }}
+            >
+              {quotes.map((quote, index) => (
+                <div className="quote" key={index}>
+                  {quote}
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </FadeInSection>
-      <div className="contacts-reference">
+      <div className="contacts-reference" id="contacts">
         <div className="section">
           <h1 id="AbtMe">Contacts</h1>
           <hr />
+          <ul className="contact-list">
+            <li>Email: <a href="mailto:vivaanrajpurohit11@gmail.com">vivaanrajpurohit11@gmail.com</a></li>
+            <li>Phone: <a href="tel:+12094863134">+1 (209) 486-3134</a></li>
+            <li>LinkedIn: <a href="https://www.linkedin.com/in/vivaan-rajpurohit-6930a1349/" target="_blank" rel="noopener noreferrer">Vivaan Rajpurohit</a></li>
+            <li>GitHub: <a href="https://github.com/Vivaan-R21" target="_blank" rel="noopener noreferrer">Vivaan-R21</a></li>
+          </ul>
         </div>
         <div className="section">
-          <h1 id="AbtMe">Reference</h1>
+          <h1 id="AbtMe">References</h1>
           <hr />
+          <ul className="reference-list">
+            <li>
+              <strong>Gabriel Aversano</strong><br />
+              Founder, MyHomeworkRewards<br />
+              Email: <a href="mailto:MyHomeWorkRewards@gmail.com">MyHomeWorkRewards@gmail.com</a><br />
+              Phone: <a href="tel:+19059033272">+1-905-903-3272</a>
+            </li>
+            <li>
+              <strong>Monica Escamilla</strong><br />
+              Center Director, Digital NEST<br />
+              Email: <a href="mailto:mo.escamilla@digitalnest.org">mo.escamilla@digitalnest.org</a><br />
+              Phone: <a href="tel:+18317226378">+1-831-722-6378</a><br />
+              Relationship: Mentor and Guide
+            </li>
+          </ul>
         </div>
       </div>
     </div>

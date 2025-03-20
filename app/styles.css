@@ -3,16 +3,20 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #56cdfc;
-  color: white;
+  background-color: #130601; /* Dark Gray */
+  color: #FFFFFF; /* White */
 }
 
 .navbar {
-  background-color: #b8eafe;
-  padding: 10px 20px;
+  background-color: #343030; /* Darker Gray */
+  padding: 15px 30px; /* Increase padding */
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between; /* Space between items */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+  position: sticky; /* Make navbar sticky */
+  top: 0; /* Stick to the top */
+  z-index: 1000; /* Ensure it stays on top */
 }
 
 .navbar ul {
@@ -20,21 +24,30 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 45px;
+  gap: 30px; /* Increase gap between items */
 }
 
 .navbar a {
   text-decoration: none;
-  color: black;
+  color: #FFFFFF; /* White */
   font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  padding: 15px 30px; /* Increase padding */
+  border-radius: 10px; /* Increase border radius */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Add smooth transition */
+  font-size: 1.2em; /* Increase font size */
 }
 
 .navbar a:hover {
-  background-color: #87ceeb;
-  transform: scale(1.05);
+  background-color: #8B0000; /* Dark Red */
+  transform: scale(1.1); /* Slightly increase size on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+.navbar-brand {
+  font-size: 1.8em; /* Increase font size */
+  font-weight: bold;
+  color: #FFFFFF; /* White */
+  text-decoration: none;
 }
 
 .intro {
@@ -117,14 +130,39 @@ body {
 }
 
 .flip-card-front {
-  background-color: #bbb;
-  color: black;
+  background-color: #444444; /* Dark Gray */
+  color: #FFFFFF; /* White */
 }
 
 .flip-card-back {
-  background-color: #2980b9;
-  color: white;
+  background-color: #8B0000; /* Dark Red */
+  color: #FFFFFF; /* White */
   transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.flip-card-back p {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.flip-card-back ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  max-height: 100px; /* Adjust this value as needed */
+  overflow-y: auto; /* Add scroll if content overflows */
+}
+
+.flip-card-back li {
+  margin: 5px 0;
+  font-size: 0.9em;
 }
 
 .checkmark {
@@ -133,7 +171,7 @@ body {
   right: 10px;
   width: 24px;
   height: 24px;
-  background-color: green;
+  background-color: #8B0000; /* Dark Red */
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -152,26 +190,26 @@ body {
 
 .certificates {
   display: flex;
-  justify-content: space-around; /* Evenly space the boxes */
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
   margin-top: 2rem;
 }
 
 .certificate-box {
-  width: 15rem;
-  height: 1.8rem;
-  background-color: #bbb;
+  width: 20rem;
+  height: 5rem;
+  background-color: #444444; /* Dark Gray */
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   transition: all 0.3s ease;
   border-radius: 10px;
+  margin: 1rem;
 }
 
 .certificate-box:hover {
-  width: 4rem;
-  height: 2rem;
+  background-color: #8B0000; /* Dark Red */
 }
 
 .certificate-content {
@@ -179,6 +217,18 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
+  color: #FFFFFF; /* White */
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.certificate-content a {
+  color: #FFFFFF; /* White */
+  text-decoration: none;
+}
+
+.certificate-content a:hover {
+  text-decoration: underline;
 }
 
 .certificate-content .checkmark {
@@ -187,7 +237,7 @@ body {
   right: 5px;
   width: 15px;
   height: 15px;
-  background-color: green;
+  background-color: #8B0000; /* Dark Red */
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -195,12 +245,6 @@ body {
   color: white;
   font-size: 12px;
   font-weight: bold;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.certificate-box:hover .checkmark {
-  opacity: 1;
 }
 
 .side-by-side, .contacts-reference {
@@ -210,7 +254,7 @@ body {
 }
 
 .contacts-reference {
-  background-color: #b8eafe; /* Same blue color as the navbar */
+  background-color: #343030; /* Darker Gray */
   padding: 20px;
   margin-top: 2rem;
   display: flex;
@@ -247,11 +291,15 @@ body {
   text-align: center;
 }
 
+#motives {
+  user-select: none; /* Disable text selection */
+}
+
 .quote-box {
   width: 87rem;
   height: 26rem;
-  background-color: #fff;
-  border: 2px solid #b8eafe;
+  background-color: #1F1F1F; /* Dark Gray */
+  border: 2px solid #8B0000; /* Dark Red */
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -260,12 +308,22 @@ body {
   margin: 2rem auto;
   padding: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Hide overflow for smooth sliding */
+  cursor: grab; /* Change cursor to indicate draggable area */
+  user-select: none; /* Disable text selection */
+}
+
+.quote-wrapper {
+  display: flex;
 }
 
 .quote-box .quote {
   text-align: left;
   font-size: 2rem;
-  color: #333;
+  color: #FFFFFF; /* White */
+  padding: 2rem; /* Add padding for space between quote and walls */
+  min-width: 100%; /* Ensure each quote takes full width */
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .quote-box .arrow {
@@ -273,7 +331,7 @@ body {
   top: 50%;
   transform: translateY(-50%);
   font-size: 2rem;
-  color: #b8eafe;
+  color: #8B0000; /* Dark Red */
   cursor: pointer;
 }
 
@@ -283,4 +341,53 @@ body {
 
 .quote-box .arrow.right {
   right: -2rem;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.contact-list li {
+  margin: 0.5rem 0;
+}
+
+.contact-list a {
+  color: #FFFFFF; /* White */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contact-list a:hover {
+  text-decoration: underline;
+}
+
+.reference-list {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.reference-list li {
+  margin: 1rem 0;
+}
+
+.reference-list a {
+  color: #FFFFFF; /* White */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.reference-list a:hover {
+  text-decoration: underline;
+}
+
+.transition-opacity {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.opacity-100 {
+  opacity: 1;
 }
