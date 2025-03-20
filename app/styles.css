@@ -127,6 +127,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0.1rem;
 }
 
 .flip-card-front {
@@ -390,4 +391,8 @@ body {
 
 .opacity-100 {
   opacity: 1;
+}
+
+.lowered-tile {
+  margin-top: 12rem; /* Add this line to bring the Dart and JavaScript tiles down by 5 rem */
 }
