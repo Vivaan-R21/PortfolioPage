@@ -18,7 +18,13 @@ export function useFadeInOnScroll() {
     );
 
     if (ref.current) {
-      observer.observe(ref.current);
+      // Check if the element is already in the viewport
+      const rect = ref.current.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom >= 0) {
+        setIsVisible(true);
+      } else {
+        observer.observe(ref.current);
+      }
     }
 
     return () => {
@@ -26,6 +32,16 @@ export function useFadeInOnScroll() {
         observer.unobserve(ref.current);
       }
     };
+  }, []);
+
+  useEffect(() => {
+    // Set isVisible to true if the element is already in the viewport on initial render
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom >= 0) {
+        setIsVisible(true);
+      }
+    }
   }, []);
 
   return { ref, isVisible };

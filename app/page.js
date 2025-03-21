@@ -13,7 +13,7 @@ export function FadeInSection({ children }) {
     <div
       ref={ref}
       className={`transition-opacity duration-1000 ${
-        isVisible ? "opacity-100" : "opacity-0"
+        isVisible ? "opacity-100" : ""
       }`}
     >
       {children}
@@ -146,7 +146,7 @@ export default function Home() {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Vivaan Rajpurohit - Developer Portfolio</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" /> {/* Add this line for custom favicon */}
       </Head>
       <nav className="navbar">
         <a
