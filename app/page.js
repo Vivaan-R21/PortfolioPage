@@ -146,9 +146,15 @@ export default function Home() {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Vivaan Rajpurohit - Developer Portfolio</title>
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <nav className="navbar">
-        <a href="#" className="navbar-brand">
+        <a
+          href="https://bit.ly/4ip0nQH"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="navbar-brand"
+        >
           Vivaan Rajpurohit
         </a>
         <ul>
@@ -163,7 +169,12 @@ export default function Home() {
           </li>
           <li>
             <a
-              href="https://bit.ly/VivaanRajpurohitsResume" target="_blank" rel="noopener noreferrer">Resume</a>
+              href="https://bit.ly/VivaanRajpurohitsResume"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Resume
+            </a>
           </li>
           <li>
             <a href="#about">About me</a>
