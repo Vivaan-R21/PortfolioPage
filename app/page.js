@@ -25,7 +25,7 @@ export default function Home() {
   const quotes = [
     `"The impact of Vivaan’s contributions cannot be overstated. His work significantly enriched our website’s content, making it more engaging and effective for students. His technical proficiency, creative problem-solving abilities, and collaborative spirit make him an exceptional candidate who will continue to excel and make meaningful contributions to any endeavor he undertakes." – Gabriel Aversano, Founder of MyHomeworkRewards`,
     `"Vivaan's exceptional maturity and eagerness to learn prompted us to consider his participation on a case-by-case basis, and we are thrilled to have him as part of our community." – Monica Escamilla, MBA, Center Director, Digital NEST`,
-    'Placeholder quote 3',
+    `"Vivaan joined my class at just 13 years old—years ahead of the usual age group—yet he not only kept up but often surpassed his older peers. His technical aptitude, problem-solving abilities, and relentless drive for learning set him apart as a truly exceptional talent with limitless potential." — Christian Rodrigues`
   ];
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
