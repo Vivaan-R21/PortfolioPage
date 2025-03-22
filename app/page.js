@@ -147,6 +147,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Vivaan Rajpurohit - Developer Portfolio</title>
         <link rel="icon" href="/favicon.ico" /> {/* Add this line for custom favicon */}
+        <script src="updateDuration.js" defer></script>
       </Head>
       <nav className="navbar">
         <a
@@ -195,7 +196,7 @@ export default function Home() {
             <div className="text-content">
               <h1 id="MyName">Vivaan Rajpurohit</h1>
               <p className="about-me">
-                Experienced developer with 7 months of industrial work
+                Experienced developer with <span id="duration">7 months</span> of industrial work
                 experience at MyHomeWorkRewards, a Canadian platform that
                 rewards students for completing homework. Proficient in
                 HTML,CSS, JavaScript, PHP, and cloud services. Currently
