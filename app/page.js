@@ -160,10 +160,10 @@ export default function Home() {
         </a>
         <ul>
           <li>
-            <a href="#skills">Skills</a>
+            <a href="#about">About me</a>
           </li>
           <li>
-            <a href="#contacts">Contacts</a>
+            <a href="#skills">Skills</a>
           </li>
           <li>
             <a href="#awards">Awards</a>
@@ -178,7 +178,7 @@ export default function Home() {
             </a>
           </li>
           <li>
-            <a href="#about">About me</a>
+            <a href="#contacts">Contacts</a>
           </li>
         </ul>
       </nav>
