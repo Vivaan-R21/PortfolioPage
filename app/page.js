@@ -146,7 +146,8 @@ export default function Home() {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Vivaan Rajpurohit - Developer Portfolio</title>
-        <link rel="icon" href="/favicon.ico" /> {/* Add this line for custom favicon */}
+        <link rel="icon" href="/favicon.ico" />{" "}
+        {/* Add this line for custom favicon */}
         <script src="updateDuration.js" defer></script>
       </Head>
       <nav className="navbar">
@@ -170,7 +171,7 @@ export default function Home() {
           </li>
           <li>
             <a
-              href="https://bit.ly/VivaanRajpurohitsResume"
+              href="https://www.canva.com/design/DAGhqNEZE_0/p2DaJ2RMFNjuISyWc1MATg/view?utm_content=DAGhqNEZE_0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h043cf16fe3"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -196,20 +197,21 @@ export default function Home() {
             <div className="text-content">
               <h1 id="MyName">Vivaan Rajpurohit</h1>
               <p className="about-me">
-                Experienced developer with <span id="duration">7 months</span> of industrial work
-                experience at MyHomeWorkRewards, a Canadian platform that
-                rewards students for completing homework. Proficient in
-                HTML,CSS, JavaScript, PHP, and cloud services. Currently
-                developing mobile and web apps with Dart, Flutter, and Python to
-                enhance user experiences, with a focus on user retention and
-                performance optimization. Passionate about continuous learning
-                and staying current with emerging technologies. Completed FAA
-                ground school and serve as School Site Council Vice President,
-                overseeing school funds. Adept at problem-solving, critical
-                thinking, and collaboration, I leverage my expertise to deliver
-                innovative solutions. Achieving a 67% improvement in website
-                performance and user engagement, contributing to significant
-                growth in user retention and overall project success.
+                Experienced developer with <span id="duration">7 months</span>{" "}
+                of industrial work experience at MyHomeWorkRewards, a Canadian
+                platform that rewards students for completing homework.
+                Proficient in HTML,CSS, JavaScript, PHP, and cloud services.
+                Currently developing mobile and web apps with Dart, Flutter, and
+                Python to enhance user experiences, with a focus on user
+                retention and performance optimization. Passionate about
+                continuous learning and staying current with emerging
+                technologies. Completed FAA ground school and serve as School
+                Site Council Vice President, overseeing school funds. Adept at
+                problem-solving, critical thinking, and collaboration, I
+                leverage my expertise to deliver innovative solutions. Achieving
+                a 67% improvement in website performance and user engagement,
+                contributing to significant growth in user retention and overall
+                project success.
               </p>
             </div>
           </div>
